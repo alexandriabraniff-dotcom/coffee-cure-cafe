@@ -374,112 +374,120 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section id="services" className="py-24 px-6 bg-[var(--cream)]">
         <div className="max-w-6xl mx-auto">
+
           <motion.div {...fadeUp} className="text-center mb-16">
-            <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">What we offer</p>
+            <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">More reasons to love us</p>
             <h2
               style={{ fontFamily: "var(--font-pacifico), cursive" }}
               className="text-4xl md:text-5xl text-[var(--purple)] mb-4"
             >
-              Our Menu
+              Our Services
             </h2>
-            <p className="text-[var(--muted)] max-w-sm mx-auto">
-              Everything made fresh to order — coffee, food, and a little something sweet.
+            <p className="text-[var(--muted)] max-w-md mx-auto leading-relaxed">
+              We&apos;re more than just great coffee. Here&apos;s how we like to give a little extra back to our community.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85&auto=format&fit=crop",
-                title: "Coffee & Drinks",
-                desc: "Every cup crafted with care — from a simple long black to a silky flat white, iced latte, chai, or a thick shake.",
-                items: [
-                  ["Espresso & Long Black", "from $4.80"],
-                  ["Flat White, Latte, Cappuccino", "$7.00"],
-                  ["Chai & Mocha", "$7.00–$7.50"],
-                  ["Iced Latte", "$9.20"],
-                  ["Smoothies", "$11.50"],
-                ],
-              },
-              {
-                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=85&auto=format&fit=crop",
-                title: "Fresh Food",
-                desc: "Made to order with good ingredients — Turkish rolls, bagels, wraps, toasties, and toast done your way.",
-                items: [
-                  ["Turkish Roll", "$15.00"],
-                  ["Bagel", "$15.00"],
-                  ["Wrap", "$15.20"],
-                  ["Toasty", "$10.00"],
-                  ["Sourdough Toast", "$7.80"],
-                  ["Kids Meal Deal", "$14.50"],
-                ],
-              },
-              {
-                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=85&auto=format&fit=crop",
-                title: "Cabinet & Treats",
-                desc: "All baked in-house. Grab one with your coffee or take a box home — they don't last long.",
-                items: [
-                  ["Sausage Roll (House Made)", "$8.00"],
-                  ["Savoury Muffin", "$8.90"],
-                  ["Scones with Cream", "$9.70"],
-                  ["House Made Muffins", "$7.80"],
-                  ["Cakes & Slices", "from $5.20"],
-                  ["Croissant", "$11.00"],
-                ],
-              },
-            ].map((card, i) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.13 }}
-                className="rounded-3xl overflow-hidden shadow-lg group"
-              >
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--espresso)]/70 to-transparent" />
-                  <h3
-                    style={{ fontFamily: "var(--font-pacifico), cursive" }}
-                    className="absolute bottom-4 left-5 text-white text-2xl drop-shadow"
-                  >
-                    {card.title}
-                  </h3>
-                </div>
-                <div className="bg-white p-6">
-                  <p className="text-[var(--muted)] text-sm leading-relaxed mb-5">{card.desc}</p>
-                  <ul className="space-y-2.5">
-                    {card.items.map(([name, price]) => (
-                      <li key={name} className="flex items-center justify-between text-sm">
-                        <span className="flex items-center gap-2 text-[var(--warm-gray)]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
-                          {name}
-                        </span>
-                        <span className="text-[var(--purple)] font-semibold tabular-nums shrink-0 ml-2">{price}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {/* ── Loyalty Rewards — full-width feature panel ────────────────── */}
+          <motion.div
+            {...fadeUp}
+            className="rounded-3xl overflow-hidden mb-8 grid grid-cols-1 md:grid-cols-2 shadow-xl"
+          >
+            {/* Image side */}
+            <div className="relative h-64 md:h-auto min-h-[320px] overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=85&auto=format&fit=crop"
+                alt="Loyalty rewards"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--purple)]/60 to-transparent md:bg-none" />
+            </div>
 
-          <motion.div {...fadeUp} className="text-center">
-            <a
-              href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white font-bold rounded-2xl shadow-lg transition-all hover:scale-[1.03] text-base"
-            >
-              Order Online via Uber Eats <ExternalLink className="w-4 h-4" />
-            </a>
+            {/* Content side */}
+            <div className="bg-[var(--purple)] p-10 flex flex-col justify-center">
+              <span className="text-[var(--teal)] text-xs tracking-[0.2em] uppercase font-bold mb-4">
+                For our regulars
+              </span>
+              <h3
+                style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                className="text-3xl md:text-4xl text-white mb-5 leading-snug"
+              >
+                Loyalty Rewards Card
+              </h3>
+              <p className="text-white/75 leading-relaxed mb-6">
+                Every coffee gets you one step closer to a free one. Pick up your loyalty card in-store and start collecting stamps with every purchase. It&apos;s our way of saying thank you for being a regular.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Collect a stamp with every coffee purchase",
+                  "Fill your card and earn a free coffee",
+                  "Available in-store — just ask at the counter",
+                  "No app, no fuss — just your card",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-white/80 text-sm">
+                    <span className="w-2 h-2 rounded-full bg-[var(--teal)] shrink-0 mt-1.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-white/50 text-sm italic">
+                Come in and ask Teresa or the team to get you started!
+              </p>
+            </div>
           </motion.div>
+
+          {/* ── Custom Merch — full-width feature panel ───────────────────── */}
+          <motion.div
+            {...fadeUp}
+            className="rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-xl"
+          >
+            {/* Content side */}
+            <div className="bg-[var(--espresso)] p-10 flex flex-col justify-center order-2 md:order-1">
+              <span className="text-[var(--teal)] text-xs tracking-[0.2em] uppercase font-bold mb-4">
+                Wear the cure
+              </span>
+              <h3
+                style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                className="text-3xl md:text-4xl text-white mb-5 leading-snug"
+              >
+                Custom Merch
+              </h3>
+              <p className="text-white/75 leading-relaxed mb-6">
+                Show your love for Coffee Cure Cafe with our custom-branded merchandise. Whether you&apos;re a daily regular or just discovered us — take a little piece of the cafe home with you.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  "Branded tees, tote bags & more",
+                  "Limited runs — grab them while they last",
+                  "Available in-store at the counter",
+                  "Makes a great gift for the coffee lover in your life",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-white/80 text-sm">
+                    <span className="w-2 h-2 rounded-full bg-[var(--teal)] shrink-0 mt-1.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-white/50 text-sm italic">
+                Ask in-store to see what&apos;s currently available.
+              </p>
+            </div>
+
+            {/* Image side */}
+            <div className="relative h-64 md:h-auto min-h-[320px] overflow-hidden order-1 md:order-2">
+              <Image
+                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=85&auto=format&fit=crop"
+                alt="Custom merchandise"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-[var(--espresso)]/40 to-transparent" />
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

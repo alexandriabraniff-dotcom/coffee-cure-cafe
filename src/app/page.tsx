@@ -7,8 +7,8 @@ import { MapPin, Phone, Mail, ExternalLink, Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#about",    label: "About"    },
-  { href: "#hours",    label: "Hours"    },
   { href: "#services", label: "Services" },
+  { href: "#hours",    label: "Hours"    },
   { href: "#find-us",  label: "Find Us"  },
 ];
 
@@ -298,7 +298,8 @@ export default function HomePage() {
                 alt="Teresa — owner of Coffee Cure Cafe"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top"
+                className="object-cover"
+                style={{ objectPosition: "center 25%" }}
               />
             </motion.div>
             <motion.div {...fadeUp} className="order-1 md:order-2">
@@ -321,6 +322,69 @@ export default function HomePage() {
               <p className="text-[var(--purple)] font-semibold italic">
                 Come say hi! I&apos;d love to make you my go-to order: a macadamia milk latte.
               </p>
+            </motion.div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SERVICES
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section id="services" className="py-24 px-6 bg-[var(--cream)]">
+        <div className="max-w-3xl mx-auto">
+
+          <motion.div {...fadeUp} className="text-center mb-16">
+            <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">More reasons to love us</p>
+            <h2
+              style={{ fontFamily: "var(--font-pacifico), cursive" }}
+              className="text-4xl md:text-5xl text-[var(--purple)] mb-4"
+            >
+              Our Services
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-col gap-12">
+            {/* Loyalty Rewards */}
+            <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start gap-8">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--purple)] flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                </svg>
+              </div>
+              <div>
+                <h3
+                  style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                  className="text-2xl text-[var(--purple)] mb-2"
+                >
+                  Loyalty Rewards Card
+                </h3>
+                <p className="text-[var(--muted)] leading-relaxed">
+                  Every coffee gets you one step closer to a free one. Pick up your loyalty card in-store and collect a stamp with every purchase. Fill your card, earn a free coffee — no app, no fuss.
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="border-t border-[var(--border)]" />
+
+            {/* Custom Merch */}
+            <motion.div {...fadeUp} className="flex flex-col md:flex-row items-start gap-8">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[var(--teal)] flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+                </svg>
+              </div>
+              <div>
+                <h3
+                  style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                  className="text-2xl text-[var(--purple)] mb-2"
+                >
+                  Custom Merch
+                </h3>
+                <p className="text-[var(--muted)] leading-relaxed">
+                  Take a little piece of the cafe home. We stock custom-branded tees, tote bags, and more — limited runs, available in-store at the counter. Makes a great gift for the coffee lover in your life.
+                </p>
+              </div>
             </motion.div>
           </div>
 
@@ -358,128 +422,6 @@ export default function HomePage() {
           <motion.p {...fadeUp} className="text-center text-white/25 text-xs mt-8">
             Hours may vary on public holidays — call (08) 8248 5000 to confirm.
           </motion.p>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          SERVICES
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section id="services" className="py-24 px-6 bg-[var(--cream)]">
-        <div className="max-w-6xl mx-auto">
-
-          <motion.div {...fadeUp} className="text-center mb-16">
-            <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">More reasons to love us</p>
-            <h2
-              style={{ fontFamily: "var(--font-pacifico), cursive" }}
-              className="text-4xl md:text-5xl text-[var(--purple)] mb-4"
-            >
-              Our Services
-            </h2>
-            <p className="text-[var(--muted)] max-w-md mx-auto leading-relaxed">
-              We&apos;re more than just great coffee. Here&apos;s how we like to give a little extra back to our community.
-            </p>
-          </motion.div>
-
-          {/* ── Loyalty Rewards — full-width feature panel ────────────────── */}
-          <motion.div
-            {...fadeUp}
-            className="rounded-3xl overflow-hidden mb-8 grid grid-cols-1 md:grid-cols-2 shadow-xl"
-          >
-            {/* Image side */}
-            <div className="relative h-64 md:h-auto min-h-[320px] overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=85&auto=format&fit=crop"
-                alt="Loyalty rewards"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--purple)]/60 to-transparent md:bg-none" />
-            </div>
-
-            {/* Content side */}
-            <div className="bg-[var(--purple)] p-10 flex flex-col justify-center">
-              <span className="text-[var(--teal)] text-xs tracking-[0.2em] uppercase font-bold mb-4">
-                For our regulars
-              </span>
-              <h3
-                style={{ fontFamily: "var(--font-pacifico), cursive" }}
-                className="text-3xl md:text-4xl text-white mb-5 leading-snug"
-              >
-                Loyalty Rewards Card
-              </h3>
-              <p className="text-white/75 leading-relaxed mb-6">
-                Every coffee gets you one step closer to a free one. Pick up your loyalty card in-store and start collecting stamps with every purchase. It&apos;s our way of saying thank you for being a regular.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Collect a stamp with every coffee purchase",
-                  "Fill your card and earn a free coffee",
-                  "Available in-store — just ask at the counter",
-                  "No app, no fuss — just your card",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/80 text-sm">
-                    <span className="w-2 h-2 rounded-full bg-[var(--teal)] shrink-0 mt-1.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-white/50 text-sm italic">
-                Come in and ask Teresa or the team to get you started!
-              </p>
-            </div>
-          </motion.div>
-
-          {/* ── Custom Merch — full-width feature panel ───────────────────── */}
-          <motion.div
-            {...fadeUp}
-            className="rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-xl"
-          >
-            {/* Content side */}
-            <div className="bg-[var(--espresso)] p-10 flex flex-col justify-center order-2 md:order-1">
-              <span className="text-[var(--teal)] text-xs tracking-[0.2em] uppercase font-bold mb-4">
-                Wear the cure
-              </span>
-              <h3
-                style={{ fontFamily: "var(--font-pacifico), cursive" }}
-                className="text-3xl md:text-4xl text-white mb-5 leading-snug"
-              >
-                Custom Merch
-              </h3>
-              <p className="text-white/75 leading-relaxed mb-6">
-                Show your love for Coffee Cure Cafe with our custom-branded merchandise. Whether you&apos;re a daily regular or just discovered us — take a little piece of the cafe home with you.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Branded tees, tote bags & more",
-                  "Limited runs — grab them while they last",
-                  "Available in-store at the counter",
-                  "Makes a great gift for the coffee lover in your life",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/80 text-sm">
-                    <span className="w-2 h-2 rounded-full bg-[var(--teal)] shrink-0 mt-1.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-white/50 text-sm italic">
-                Ask in-store to see what&apos;s currently available.
-              </p>
-            </div>
-
-            {/* Image side */}
-            <div className="relative h-64 md:h-auto min-h-[320px] overflow-hidden order-1 md:order-2">
-              <Image
-                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=85&auto=format&fit=crop"
-                alt="Custom merchandise"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-[var(--espresso)]/40 to-transparent" />
-            </div>
-          </motion.div>
-
         </div>
       </section>
 

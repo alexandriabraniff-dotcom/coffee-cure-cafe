@@ -73,7 +73,7 @@ export default function HomePage() {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="flex items-center gap-3"
               >
-                <Image src="/logo.png" alt="Coffee Cure Cafe" width={42} height={42} className="rounded-[3px]" />
+                <Image src="/logo.png" alt="Coffee Cure Cafe" width={42} height={42} className="rounded-full" />
                 <span
                   style={{ fontFamily: "var(--font-pacifico), cursive" }}
                   className="hidden sm:block text-[var(--purple)] text-base leading-tight"
@@ -207,7 +207,7 @@ export default function HomePage() {
               alt="Coffee Cure Cafe"
               width={160}
               height={160}
-              className="rounded-[3px] shadow-2xl ring-4 ring-white/20"
+              className="rounded-full shadow-2xl ring-4 ring-white/20"
             />
           </motion.div>
 

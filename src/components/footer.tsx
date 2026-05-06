@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-5">
-            <Image src="/logo.png" alt="Coffee Cure Cafe" width={52} height={52} className="rounded-[3px]" />
+            <Image src="/logo.png" alt="Coffee Cure Cafe" width={52} height={52} className="rounded-full" />
             <span style={{ fontFamily: "var(--font-pacifico), cursive" }} className="text-white text-lg leading-tight">
               Coffee Cure<br />Cafe
             </span>

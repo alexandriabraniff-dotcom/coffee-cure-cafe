@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { MapPin, Phone, Mail, ExternalLink, Menu, X } from "lucide-react";
 
-// ─── Nav links ────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
   { href: "#about",    label: "About"    },
   { href: "#hours",    label: "Hours"    },
@@ -17,7 +16,6 @@ function smoothScroll(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-// ─── Fade-up helper ───────────────────────────────────────────────────────────
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
@@ -25,7 +23,6 @@ const fadeUp = {
   transition: { duration: 0.65, ease: "easeOut" },
 };
 
-// ─── Hours ────────────────────────────────────────────────────────────────────
 const HOURS = [
   { day: "Monday",    time: "6:30am – 2:00pm", closed: false },
   { day: "Tuesday",   time: "6:30am – 2:00pm", closed: false },
@@ -36,7 +33,6 @@ const HOURS = [
   { day: "Sunday",    time: "7:30am – 12:00pm", closed: false },
 ];
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -45,7 +41,7 @@ export default function HomePage() {
   useEffect(() => {
     const onScroll = () => {
       const heroH = heroRef.current?.offsetHeight ?? window.innerHeight;
-      setScrolled(window.scrollY > heroH * 0.8);
+      setScrolled(window.scrollY > heroH * 0.85);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -56,53 +52,11 @@ export default function HomePage() {
     smoothScroll(href);
   };
 
-  // Shared desktop nav links + CTA
-  const DesktopLinks = ({ light }: { light: boolean }) => (
-    <nav className="hidden md:flex items-center gap-7">
-      {NAV_LINKS.map((link) => (
-        <button
-          key={link.href}
-          onClick={() => handleNav(link.href)}
-          className={`text-sm font-medium tracking-wide transition-colors cursor-pointer ${
-            light ? "text-white/85 hover:text-white" : "text-[var(--muted)] hover:text-[var(--purple)]"
-          }`}
-        >
-          {link.label}
-        </button>
-      ))}
-      <a
-        href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-full transition-all hover:scale-[1.03] shadow-sm"
-      >
-        Order Online
-      </a>
-    </nav>
-  );
-
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════════════
-          HERO NAV — uses inline style to guarantee fixed position
+          DROPDOWN NAV — fixed, only visible after hero scrolls away
       ═══════════════════════════════════════════════════════════════════ */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 40 }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="shrink-0">
-            <Image src="/logo.png" alt="Coffee Cure Cafe" width={58} height={58} className="rounded-full shadow-md" />
-          </button>
-          <DesktopLinks light />
-          <button
-            className="md:hidden text-white drop-shadow"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {/* ── DROPDOWN NAV — slides in after hero ─────────────────────────── */}
       <AnimatePresence>
         {scrolled && (
           <motion.header
@@ -114,16 +68,42 @@ export default function HomePage() {
             className="bg-[var(--cream)] border-b border-[var(--border)] shadow-sm"
           >
             <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+              {/* Logo + name */}
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="flex items-center gap-3"
               >
                 <Image src="/logo.png" alt="Coffee Cure Cafe" width={42} height={42} className="rounded-full" />
-                <span style={{ fontFamily: "var(--font-pacifico), cursive" }} className="hidden sm:block text-[var(--purple)] text-base leading-tight">
+                <span
+                  style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                  className="hidden sm:block text-[var(--purple)] text-base leading-tight"
+                >
                   Coffee Cure Cafe
                 </span>
               </button>
-              <DesktopLinks light={false} />
+
+              {/* Desktop links */}
+              <nav className="hidden md:flex items-center gap-7">
+                {NAV_LINKS.map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNav(link.href)}
+                    className="text-sm font-medium text-[var(--muted)] hover:text-[var(--purple)] transition-colors cursor-pointer"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <a
+                  href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-full transition-all hover:scale-[1.03]"
+                >
+                  Order Online
+                </a>
+              </nav>
+
+              {/* Mobile toggle */}
               <button
                 className="md:hidden text-[var(--espresso)]"
                 onClick={() => setMobileOpen(!mobileOpen)}
@@ -136,7 +116,7 @@ export default function HomePage() {
         )}
       </AnimatePresence>
 
-      {/* ── MOBILE DRAWER ───────────────────────────────────────────────── */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -144,7 +124,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 45 }}
+            style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 49 }}
             className="bg-[var(--espresso)] pt-20 pb-8 px-8 flex flex-col gap-5 md:hidden shadow-xl"
           >
             {NAV_LINKS.map((link) => (
@@ -171,9 +151,12 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          HERO
+          HERO — nav lives INSIDE here as absolute, scrolls away with hero
       ═══════════════════════════════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden"
+      >
         <Image
           src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1800&q=85&auto=format&fit=crop"
           alt="Coffee beans and espresso"
@@ -181,11 +164,46 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        {/* Rich purple-tinted overlay for brand feel */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#2D1A3D]/80 via-[#2D1A3D]/55 to-[#2D1A3D]/80" />
 
+        {/* ── Hero nav — absolute inside hero, scrolls away with it ─────── */}
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-end">
+            {/* Desktop nav links only — no logo (big logo is in the centre) */}
+            <nav className="hidden md:flex items-center gap-7">
+              {NAV_LINKS.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNav(link.href)}
+                  className="text-sm font-medium text-white/80 hover:text-white transition-colors cursor-pointer drop-shadow"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <a
+                href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-full transition-all hover:scale-[1.03] shadow"
+              >
+                Order Online
+              </a>
+            </nav>
+
+            {/* Mobile hamburger on hero */}
+            <button
+              className="md:hidden text-white drop-shadow"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* ── Hero content ─────────────────────────────────────────────── */}
         <div className="relative z-10 text-center px-6 max-w-2xl mx-auto flex flex-col items-center">
-          {/* Big logo */}
+          {/* Big logo only */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -221,7 +239,7 @@ export default function HomePage() {
             <br className="hidden md:block" /> served with a warm smile every morning.
           </motion.p>
 
-          {/* HERO CTAs — bold and eye-catching */}
+          {/* CTAs — bold, no emojis */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -232,15 +250,15 @@ export default function HomePage() {
               href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-base font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.04] active:scale-[0.98]"
+              className="flex items-center justify-center px-9 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-base font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.04] active:scale-[0.98]"
             >
-              🛒 Order Online
+              Order Online
             </a>
             <button
               onClick={() => smoothScroll("#find-us")}
-              className="flex items-center justify-center gap-2 px-8 py-4 bg-white/15 hover:bg-white/25 border-2 border-white/60 hover:border-white text-white text-base font-bold rounded-2xl backdrop-blur-sm transition-all hover:scale-[1.04] active:scale-[0.98]"
+              className="flex items-center justify-center px-9 py-4 bg-white/15 hover:bg-white/25 border-2 border-white/60 hover:border-white text-white text-base font-bold rounded-2xl backdrop-blur-sm transition-all hover:scale-[1.04] active:scale-[0.98]"
             >
-              📍 Find Us
+              Find Us
             </button>
           </motion.div>
         </div>
@@ -252,14 +270,14 @@ export default function HomePage() {
       <section id="about" className="py-24 px-6 bg-[var(--cream)]">
         <div className="max-w-6xl mx-auto">
 
-          {/* Top: text + cafe photo */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mb-20">
+          {/* Cafe story */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center mb-24">
             <motion.div {...fadeUp}>
-              <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-4">
-                About Us
-              </p>
-              <h2 style={{ fontFamily: "var(--font-pacifico), cursive" }}
-                className="text-4xl md:text-5xl text-[var(--purple)] leading-tight mb-6">
+              <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-4">About Us</p>
+              <h2
+                style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                className="text-4xl md:text-5xl text-[var(--purple)] leading-tight mb-6"
+              >
                 A little corner worth coming back to.
               </h2>
               <p className="text-[var(--muted)] leading-relaxed mb-4">
@@ -292,11 +310,11 @@ export default function HomePage() {
               />
             </motion.div>
             <motion.div {...fadeUp} className="order-1 md:order-2">
-              <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-4">
-                Meet the owner
-              </p>
-              <h2 style={{ fontFamily: "var(--font-pacifico), cursive" }}
-                className="text-4xl text-[var(--purple)] leading-tight mb-6">
+              <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-4">Meet the owner</p>
+              <h2
+                style={{ fontFamily: "var(--font-pacifico), cursive" }}
+                className="text-4xl text-[var(--purple)] leading-tight mb-6"
+              >
                 Meet Teresa
               </h2>
               <p className="text-[var(--muted)] leading-relaxed mb-4">
@@ -309,7 +327,7 @@ export default function HomePage() {
                 That&apos;s what makes me happiest — the people, the coffee, and the little moments that make Coffee Cure Cafe feel like home.
               </p>
               <p className="text-[var(--purple)] font-semibold italic">
-                Come say hi! I&apos;d love to make you my go-to order: a macadamia milk latte. ☕
+                Come say hi! I&apos;d love to make you my go-to order: a macadamia milk latte.
               </p>
             </motion.div>
           </div>
@@ -324,8 +342,10 @@ export default function HomePage() {
         <div className="max-w-xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
             <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">When to visit</p>
-            <h2 style={{ fontFamily: "var(--font-pacifico), cursive" }}
-              className="text-4xl md:text-5xl text-white mb-3">
+            <h2
+              style={{ fontFamily: "var(--font-pacifico), cursive" }}
+              className="text-4xl md:text-5xl text-white mb-3"
+            >
               Opening Hours
             </h2>
             <p className="text-white/40 text-sm">Open six days a week — closed Wednesdays.</p>
@@ -333,8 +353,10 @@ export default function HomePage() {
 
           <motion.div {...fadeUp}>
             {HOURS.map((h, i) => (
-              <div key={h.day}
-                className={`flex items-center justify-between py-5 ${i !== HOURS.length - 1 ? "border-b border-white/10" : ""}`}>
+              <div
+                key={h.day}
+                className={`flex items-center justify-between py-5 ${i !== HOURS.length - 1 ? "border-b border-white/10" : ""}`}
+              >
                 <span className={`font-medium text-base ${h.closed ? "text-white/35" : "text-white"}`}>{h.day}</span>
                 <span className={`text-sm ${h.closed ? "text-[var(--teal)] italic" : "text-white/55"}`}>{h.time}</span>
               </div>
@@ -354,8 +376,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-16">
             <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">What we offer</p>
-            <h2 style={{ fontFamily: "var(--font-pacifico), cursive" }}
-              className="text-4xl md:text-5xl text-[var(--purple)] mb-4">
+            <h2
+              style={{ fontFamily: "var(--font-pacifico), cursive" }}
+              className="text-4xl md:text-5xl text-[var(--purple)] mb-4"
+            >
               Our Menu
             </h2>
             <p className="text-[var(--muted)] max-w-sm mx-auto">
@@ -363,26 +387,45 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          {/* Three large visual service panels */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             {[
               {
                 image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85&auto=format&fit=crop",
                 title: "Coffee & Drinks",
                 desc: "Every cup crafted with care — from a simple long black to a silky flat white, iced latte, chai, or a thick shake.",
-                items: ["Espresso & Long Black — from $4.80", "Flat White, Latte, Cappuccino — $7.00", "Chai & Mocha — $7.00–$7.50", "Iced Latte — $9.20", "Smoothies — $11.50"],
+                items: [
+                  ["Espresso & Long Black", "from $4.80"],
+                  ["Flat White, Latte, Cappuccino", "$7.00"],
+                  ["Chai & Mocha", "$7.00–$7.50"],
+                  ["Iced Latte", "$9.20"],
+                  ["Smoothies", "$11.50"],
+                ],
               },
               {
                 image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=85&auto=format&fit=crop",
                 title: "Fresh Food",
                 desc: "Made to order with good ingredients — Turkish rolls, bagels, wraps, toasties, and toast done your way.",
-                items: ["Turkish Roll — $15.00", "Bagel — $15.00", "Wrap — $15.20", "Toasty — $10.00", "Sourdough Toast — $7.80", "Kids Meal Deal — $14.50"],
+                items: [
+                  ["Turkish Roll", "$15.00"],
+                  ["Bagel", "$15.00"],
+                  ["Wrap", "$15.20"],
+                  ["Toasty", "$10.00"],
+                  ["Sourdough Toast", "$7.80"],
+                  ["Kids Meal Deal", "$14.50"],
+                ],
               },
               {
                 image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=85&auto=format&fit=crop",
                 title: "Cabinet & Treats",
                 desc: "All baked in-house. Grab one with your coffee or take a box home — they don't last long.",
-                items: ["Sausage Roll (House Made) — $8.00", "Savoury Muffin — $8.90", "Scones with Cream — $9.70", "House Made Muffins — $7.80", "Cakes & Slices — from $5.20", "Croissant — $11.00"],
+                items: [
+                  ["Sausage Roll (House Made)", "$8.00"],
+                  ["Savoury Muffin", "$8.90"],
+                  ["Scones with Cream", "$9.70"],
+                  ["House Made Muffins", "$7.80"],
+                  ["Cakes & Slices", "from $5.20"],
+                  ["Croissant", "$11.00"],
+                ],
               },
             ].map((card, i) => (
               <motion.div
@@ -393,7 +436,6 @@ export default function HomePage() {
                 transition={{ duration: 0.6, delay: i * 0.13 }}
                 className="rounded-3xl overflow-hidden shadow-lg group"
               >
-                {/* Photo top */}
                 <div className="relative h-52 overflow-hidden">
                   <Image
                     src={card.image}
@@ -402,7 +444,7 @@ export default function HomePage() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--espresso)]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--espresso)]/70 to-transparent" />
                   <h3
                     style={{ fontFamily: "var(--font-pacifico), cursive" }}
                     className="absolute bottom-4 left-5 text-white text-2xl drop-shadow"
@@ -410,22 +452,18 @@ export default function HomePage() {
                     {card.title}
                   </h3>
                 </div>
-                {/* Content */}
                 <div className="bg-white p-6">
                   <p className="text-[var(--muted)] text-sm leading-relaxed mb-5">{card.desc}</p>
-                  <ul className="space-y-2">
-                    {card.items.map((item) => {
-                      const [name, price] = item.split(" — ");
-                      return (
-                        <li key={item} className="flex items-center justify-between text-sm">
-                          <span className="flex items-center gap-2 text-[var(--warm-gray)]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
-                            {name}
-                          </span>
-                          {price && <span className="text-[var(--purple)] font-semibold tabular-nums shrink-0 ml-2">{price}</span>}
-                        </li>
-                      );
-                    })}
+                  <ul className="space-y-2.5">
+                    {card.items.map(([name, price]) => (
+                      <li key={name} className="flex items-center justify-between text-sm">
+                        <span className="flex items-center gap-2 text-[var(--warm-gray)]">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] shrink-0" />
+                          {name}
+                        </span>
+                        <span className="text-[var(--purple)] font-semibold tabular-nums shrink-0 ml-2">{price}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </motion.div>
@@ -439,7 +477,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white font-bold rounded-2xl shadow-lg transition-all hover:scale-[1.03] text-base"
             >
-              🛒 Order Online via Uber Eats <ExternalLink className="w-4 h-4" />
+              Order Online via Uber Eats <ExternalLink className="w-4 h-4" />
             </a>
           </motion.div>
         </div>
@@ -452,8 +490,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
             <p className="text-[var(--teal)] text-xs tracking-[0.22em] uppercase font-bold mb-3">Come visit</p>
-            <h2 style={{ fontFamily: "var(--font-pacifico), cursive" }}
-              className="text-4xl md:text-5xl text-[var(--purple)] mb-4">
+            <h2
+              style={{ fontFamily: "var(--font-pacifico), cursive" }}
+              className="text-4xl md:text-5xl text-[var(--purple)] mb-4"
+            >
               Find Us
             </h2>
             <p className="text-[var(--muted)] max-w-sm mx-auto">
@@ -462,7 +502,6 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            {/* Map */}
             <motion.div {...fadeUp} className="rounded-3xl overflow-hidden shadow-lg">
               <iframe
                 title="Coffee Cure Cafe location"
@@ -476,7 +515,6 @@ export default function HomePage() {
               />
             </motion.div>
 
-            {/* Clean contact details — no boxes */}
             <motion.div {...fadeUp} className="space-y-8 pt-2">
               <div>
                 <p className="text-[var(--teal)] text-xs uppercase tracking-widest font-bold mb-2">Address</p>
@@ -493,8 +531,10 @@ export default function HomePage() {
 
               <div>
                 <p className="text-[var(--teal)] text-xs uppercase tracking-widest font-bold mb-2">Phone</p>
-                <a href="tel:+61882485000"
-                  className="flex items-center gap-2 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium">
+                <a
+                  href="tel:+61882485000"
+                  className="flex items-center gap-2 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium"
+                >
                   <Phone className="w-4 h-4 text-[var(--purple)] shrink-0" />
                   (08) 8248 5000
                 </a>
@@ -502,8 +542,10 @@ export default function HomePage() {
 
               <div>
                 <p className="text-[var(--teal)] text-xs uppercase tracking-widest font-bold mb-2">Email</p>
-                <a href="mailto:coffeecurecafe@gmail.com"
-                  className="flex items-center gap-2 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium">
+                <a
+                  href="mailto:coffeecurecafe@gmail.com"
+                  className="flex items-center gap-2 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium"
+                >
                   <Mail className="w-4 h-4 text-[var(--purple)] shrink-0" />
                   coffeecurecafe@gmail.com
                 </a>
@@ -512,15 +554,23 @@ export default function HomePage() {
               <div>
                 <p className="text-[var(--teal)] text-xs uppercase tracking-widest font-bold mb-3">Follow Us</p>
                 <div className="flex flex-col gap-3">
-                  <a href="https://www.facebook.com/coffeecurecafe" target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium">
+                  <a
+                    href="https://www.facebook.com/coffeecurecafe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium"
+                  >
                     <svg className="w-5 h-5 text-[var(--purple)] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                     </svg>
                     facebook.com/coffeecurecafe
                   </a>
-                  <a href="https://www.instagram.com/coffeecurecafeadl" target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium">
+                  <a
+                    href="https://www.instagram.com/coffeecurecafeadl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors font-medium"
+                  >
                     <svg className="w-5 h-5 text-[var(--purple)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>

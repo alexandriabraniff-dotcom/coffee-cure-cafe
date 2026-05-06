@@ -21,7 +21,7 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[var(--terracotta)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
+          <p className="text-[var(--purple)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
             Who we are
           </p>
           <h1 className="font-display text-5xl md:text-6xl text-white mb-4">Our Story</h1>
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="py-24 px-6 bg-[var(--cream)]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div {...fadeUp}>
-            <p className="text-[var(--terracotta)] text-xs tracking-[0.18em] uppercase font-medium mb-5">
+            <p className="text-[var(--purple)] text-xs tracking-[0.18em] uppercase font-medium mb-5">
               Largs North, SA
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--espresso)] leading-snug mb-6">
@@ -113,7 +113,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--terracotta)] hover:bg-[var(--terracotta)]/90 text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02]"
+            className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--purple)] hover:bg-[var(--purple)]/90 text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02]"
           >
             Find Us
           </Link>

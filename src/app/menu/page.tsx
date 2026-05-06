@@ -86,7 +86,7 @@ export default function MenuPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[var(--terracotta)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
+          <p className="text-[var(--purple)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
             What we serve
           </p>
           <h1 className="font-display text-5xl md:text-6xl text-white mb-4">Our Menu</h1>
@@ -120,7 +120,7 @@ export default function MenuPage() {
                     <span className="text-[var(--warm-gray)] group-hover:text-[var(--espresso)] transition-colors">
                       {item.name}
                     </span>
-                    <span className="text-[var(--terracotta)] font-medium tabular-nums">
+                    <span className="text-[var(--purple)] font-medium tabular-nums">
                       {item.price}
                     </span>
                   </div>

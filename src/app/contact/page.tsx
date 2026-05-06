@@ -30,7 +30,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[var(--terracotta)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
+          <p className="text-[var(--purple)] text-xs tracking-[0.2em] uppercase font-medium mb-4">
             We&apos;d love to see you
           </p>
           <h1 className="font-display text-5xl md:text-6xl text-white mb-4">Find Us</h1>
@@ -48,8 +48,8 @@ export default function ContactPage() {
               <h2 className="font-display text-3xl text-[var(--espresso)] mb-6">Get in touch</h2>
               <ul className="space-y-5">
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[var(--terracotta)]/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4 text-[var(--terracotta)]" />
+                  <div className="w-10 h-10 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <MapPin className="w-4 h-4 text-[var(--purple)]" />
                   </div>
                   <div>
                     <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Address</p>
@@ -58,30 +58,30 @@ export default function ContactPage() {
                       href="https://maps.google.com/?q=595a+Military+Rd,+Largs+North+SA+5016"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-[var(--terracotta)] text-sm mt-2 hover:underline"
+                      className="inline-flex items-center gap-1 text-[var(--purple)] text-sm mt-2 hover:underline"
                     >
                       Get directions <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[var(--terracotta)]/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Phone className="w-4 h-4 text-[var(--terracotta)]" />
+                  <div className="w-10 h-10 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Phone className="w-4 h-4 text-[var(--purple)]" />
                   </div>
                   <div>
                     <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Phone</p>
-                    <a href="tel:+61882485000" className="text-[var(--warm-gray)] hover:text-[var(--terracotta)] transition-colors">
+                    <a href="tel:+61882485000" className="text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors">
                       (08) 8248 5000
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[var(--terracotta)]/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Mail className="w-4 h-4 text-[var(--terracotta)]" />
+                  <div className="w-10 h-10 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Mail className="w-4 h-4 text-[var(--purple)]" />
                   </div>
                   <div>
                     <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Email</p>
-                    <a href="mailto:coffeecurecafe@gmail.com" className="text-[var(--warm-gray)] hover:text-[var(--terracotta)] transition-colors">
+                    <a href="mailto:coffeecurecafe@gmail.com" className="text-[var(--warm-gray)] hover:text-[var(--purple)] transition-colors">
                       coffeecurecafe@gmail.com
                     </a>
                   </div>
@@ -92,14 +92,14 @@ export default function ContactPage() {
             {/* Hours */}
             <div>
               <h2 className="font-display text-3xl text-[var(--espresso)] mb-6 flex items-center gap-3">
-                <Clock className="w-6 h-6 text-[var(--terracotta)]" />
+                <Clock className="w-6 h-6 text-[var(--purple)]" />
                 Trading Hours
               </h2>
               <div className="divide-y divide-[var(--border)]">
                 {hours.map((h) => (
                   <div key={h.day} className="flex justify-between py-3 text-sm">
                     <span className="text-[var(--warm-gray)]">{h.day}</span>
-                    <span className={h.closed ? "text-[var(--terracotta)]" : "text-[var(--muted)]"}>
+                    <span className={h.closed ? "text-[var(--purple)]" : "text-[var(--muted)]"}>
                       {h.time}
                     </span>
                   </div>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Clock, MapPin, Coffee, UtensilsCrossed, Heart } from "lucide-react";
+import { Clock, MapPin, Coffee, UtensilsCrossed, Heart, Phone, Mail, Facebook, Instagram, ExternalLink } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -11,6 +11,16 @@ const fadeUp = {
   viewport: { once: true, margin: "-60px" } as const,
   transition: { duration: 0.65, ease: "easeOut" },
 };
+
+const hours = [
+  { day: "Monday",    time: "6:30am – 2:00pm", closed: false },
+  { day: "Tuesday",   time: "6:30am – 2:00pm", closed: false },
+  { day: "Wednesday", time: "Closed",           closed: true  },
+  { day: "Thursday",  time: "6:30am – 2:00pm", closed: false },
+  { day: "Friday",    time: "6:30am – 2:00pm", closed: false },
+  { day: "Saturday",  time: "7:30am – 12:00pm", closed: false },
+  { day: "Sunday",    time: "7:30am – 12:00pm", closed: false },
+];
 
 export default function HomePage() {
   return (
@@ -24,13 +34,13 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--espresso)]/60 via-[var(--espresso)]/40 to-[var(--espresso)]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--espresso)]/65 via-[var(--espresso)]/45 to-[var(--espresso)]/75" />
         <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[var(--terracotta)] text-sm tracking-[0.2em] uppercase mb-4 font-medium"
+            className="text-[var(--purple-light)] text-sm tracking-[0.2em] uppercase mb-4 font-medium"
           >
             Largs North, Adelaide
           </motion.p>
@@ -60,12 +70,12 @@ export default function HomePage() {
           >
             <Link
               href="/menu"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--terracotta)] hover:bg-[var(--terracotta)]/90 text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--purple)] hover:bg-[var(--purple-dark)] text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               View Our Menu
             </Link>
             <Link
-              href="/contact"
+              href="#find-us"
               className="inline-flex items-center justify-center px-8 py-3.5 border border-white/40 hover:border-white text-white text-sm font-medium tracking-wide rounded transition-all hover:bg-white/10"
             >
               Find Us
@@ -75,18 +85,18 @@ export default function HomePage() {
       </section>
 
       {/* Hours strip */}
-      <section className="bg-[var(--espresso)] text-white py-5">
+      <section className="bg-[var(--purple)] text-white py-5">
         <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-sm text-center">
-          <span className="flex items-center gap-2 text-[var(--stone-light)]/70">
-            <Clock className="w-4 h-4 text-[var(--terracotta)]" />
+          <span className="flex items-center gap-2 text-white/80">
+            <Clock className="w-4 h-4 text-white/60" />
             Mon–Tue &amp; Thu–Fri: <strong className="text-white ml-1">6:30am – 2pm</strong>
           </span>
-          <span className="hidden sm:block text-white/20">|</span>
-          <span className="flex items-center gap-2 text-[var(--stone-light)]/70">
+          <span className="hidden sm:block text-white/30">|</span>
+          <span className="text-white/80">
             Sat–Sun: <strong className="text-white ml-1">7:30am – 12pm</strong>
           </span>
-          <span className="hidden sm:block text-white/20">|</span>
-          <span className="text-[var(--terracotta)]">Closed Wednesdays</span>
+          <span className="hidden sm:block text-white/30">|</span>
+          <span className="text-white/60 italic">Closed Wednesdays</span>
         </div>
       </section>
 
@@ -126,10 +136,10 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: i * 0.12 }}
-                className="bg-[var(--stone-light)]/40 rounded-xl p-8 hover:-translate-y-1 transition-transform duration-300"
+                className="bg-[var(--purple-muted)] rounded-xl p-8 hover:-translate-y-1 transition-transform duration-300"
               >
-                <div className="w-12 h-12 rounded-full bg-[var(--terracotta)]/10 flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5 text-[var(--terracotta)]" />
+                <div className="w-12 h-12 rounded-full bg-[var(--purple)]/15 flex items-center justify-center mb-5">
+                  <item.icon className="w-5 h-5 text-[var(--purple)]" />
                 </div>
                 <h3 className="font-display text-2xl text-[var(--espresso)] mb-3">{item.title}</h3>
                 <p className="text-[var(--muted)] text-sm leading-relaxed">{item.desc}</p>
@@ -140,7 +150,7 @@ export default function HomePage() {
       </section>
 
       {/* Split image section */}
-      <section className="bg-[var(--stone-light)]/30">
+      <section className="bg-[var(--stone-light)]/40">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center">
           <div className="relative h-72 md:h-full min-h-[400px] overflow-hidden">
             <Image
@@ -151,7 +161,7 @@ export default function HomePage() {
             />
           </div>
           <motion.div {...fadeUp} className="px-10 py-16 md:py-20">
-            <p className="text-[var(--terracotta)] text-xs tracking-[0.18em] uppercase font-medium mb-4">
+            <p className="text-[var(--purple)] text-xs tracking-[0.18em] uppercase font-medium mb-4">
               Your neighbourhood cafe
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-[var(--espresso)] leading-snug mb-6">
@@ -162,7 +172,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-[var(--terracotta)] text-sm font-medium hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-[var(--purple)] text-sm font-medium hover:gap-3 transition-all"
             >
               Our story →
             </Link>
@@ -197,7 +207,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white border border-[var(--border)] rounded-xl p-6 flex flex-col gap-2"
               >
-                <span className="text-xs text-[var(--terracotta)] font-medium tracking-wide uppercase">{item.tag}</span>
+                <span className="text-xs text-[var(--purple)] font-medium tracking-wide uppercase">{item.tag}</span>
                 <h4 className="font-display text-xl text-[var(--espresso)]">{item.name}</h4>
                 <p className="text-[var(--muted)] text-sm mt-auto pt-2 font-medium">{item.price}</p>
               </motion.div>
@@ -207,7 +217,7 @@ export default function HomePage() {
           <div className="text-center">
             <Link
               href="/menu"
-              className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--espresso)] hover:bg-[var(--espresso)]/90 text-[var(--cream)] text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--espresso)] hover:bg-[var(--espresso)]/85 text-[var(--cream)] text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               View Full Menu
             </Link>
@@ -215,34 +225,153 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Location CTA */}
-      <section className="relative py-24 overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1800&q=85&auto=format&fit=crop"
-          alt="Cafe table with coffee and morning light"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-[var(--espresso)]/75" />
-        <motion.div {...fadeUp} className="relative z-10 text-center px-6 max-w-xl mx-auto">
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-5">
-            Come say hello
-          </h2>
-          <p className="text-white/70 mb-8 leading-relaxed">
-            We&apos;re open six days a week at Shop 2/595a Military Rd, Largs North.<br />
-            Pop in and let us make your morning a little better.
-          </p>
-          <div className="flex items-center justify-center gap-2 text-white/80 text-sm mb-8">
-            <MapPin className="w-4 h-4 text-[var(--terracotta)]" />
-            Shop 2/595a Military Rd, Largs North SA 5016
-          </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--terracotta)] hover:bg-[var(--terracotta)]/90 text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02]"
+      {/* ── OPENING HOURS ── */}
+      <section className="py-24 px-6 bg-[var(--espresso)]">
+        <div className="max-w-2xl mx-auto">
+          <motion.div {...fadeUp} className="text-center mb-12">
+            <p className="text-[var(--purple-light)] text-xs tracking-[0.2em] uppercase font-medium mb-3">
+              When to visit
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-white mb-4">
+              Opening Hours
+            </h2>
+            <p className="text-white/50 text-sm">
+              We&apos;re open six days a week. Come find us.
+            </p>
+          </motion.div>
+
+          <motion.div
+            {...fadeUp}
+            className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
           >
-            Get Directions
-          </Link>
-        </motion.div>
+            {hours.map((h, i) => (
+              <div
+                key={h.day}
+                className={`flex items-center justify-between px-8 py-4 ${
+                  i !== hours.length - 1 ? "border-b border-white/10" : ""
+                } ${h.closed ? "opacity-50" : ""}`}
+              >
+                <span className="text-white font-medium">{h.day}</span>
+                <span className={`text-sm font-medium ${h.closed ? "text-[var(--purple-light)] italic" : "text-white/70"}`}>
+                  {h.time}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.p
+            {...fadeUp}
+            className="text-center text-white/40 text-xs mt-6"
+          >
+            Hours may vary on public holidays. Call us on (08) 8248 5000 to confirm.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ── FIND US ── */}
+      <section id="find-us" className="py-24 px-6 bg-[var(--cream)]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div {...fadeUp} className="text-center mb-14">
+            <p className="text-[var(--purple)] text-xs tracking-[0.2em] uppercase font-medium mb-3">
+              Come visit
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-[var(--espresso)] mb-4">
+              Find Us
+            </h2>
+            <p className="text-[var(--muted)] max-w-sm mx-auto">
+              We&apos;re easy to find on Military Road in Largs North.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            {/* Map */}
+            <motion.div
+              {...fadeUp}
+              className="rounded-2xl overflow-hidden border border-[var(--border)] shadow-sm"
+            >
+              <iframe
+                title="Coffee Cure Cafe map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3270.9!2d138.4784!3d-34.8214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0c3e0a1234567%3A0x0!2s595a+Military+Rd%2C+Largs+North+SA+5016!5e0!3m2!1sen!2sau!4v1"
+                width="100%"
+                height="320"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </motion.div>
+
+            {/* Details */}
+            <motion.div {...fadeUp} className="space-y-7">
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-[var(--purple)]" />
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Address</p>
+                  <p className="text-[var(--warm-gray)] font-medium">Shop 2/595a Military Rd<br />Largs North SA 5016</p>
+                  <a
+                    href="https://maps.google.com/?q=595a+Military+Rd,+Largs+North+SA+5016"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[var(--purple)] text-sm mt-2 hover:underline font-medium"
+                  >
+                    Get directions <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Phone className="w-5 h-5 text-[var(--purple)]" />
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Phone</p>
+                  <a href="tel:+61882485000" className="text-[var(--warm-gray)] font-medium hover:text-[var(--purple)] transition-colors">
+                    (08) 8248 5000
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-[var(--purple)]/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5 text-[var(--purple)]" />
+                </div>
+                <div>
+                  <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-1">Email</p>
+                  <a href="mailto:coffeecurecafe@gmail.com" className="text-[var(--warm-gray)] font-medium hover:text-[var(--purple)] transition-colors">
+                    coffeecurecafe@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Social */}
+              <div>
+                <p className="text-xs text-[var(--muted)] uppercase tracking-wide font-medium mb-3">Follow Us</p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://www.facebook.com/coffeecurecafe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 px-4 py-2.5 bg-[var(--purple-muted)] hover:bg-[var(--purple)] text-[var(--purple)] hover:text-white rounded-lg transition-all text-sm font-medium group"
+                  >
+                    <Facebook className="w-4 h-4" />
+                    Facebook
+                  </a>
+                  <a
+                    href="https://www.instagram.com/coffeecurecafeadl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2.5 px-4 py-2.5 bg-[var(--purple-muted)] hover:bg-[var(--purple)] text-[var(--purple)] hover:text-white rounded-lg transition-all text-sm font-medium"
+                  >
+                    <Instagram className="w-4 h-4" />
+                    Instagram
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
     </>
   );

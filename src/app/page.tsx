@@ -169,7 +169,7 @@ export default function HomePage() {
         {/* ── Hero nav — absolute inside hero, scrolls away with it ─────── */}
         <div className="absolute top-0 left-0 right-0 z-10">
           <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-end">
-            {/* Desktop nav links only — no logo (big logo is in the centre) */}
+            {/* Desktop nav links only — no logo, no Order Online (those are in the hero CTAs) */}
             <nav className="hidden md:flex items-center gap-7">
               {NAV_LINKS.map((link) => (
                 <button
@@ -180,14 +180,6 @@ export default function HomePage() {
                   {link.label}
                 </button>
               ))}
-              <a
-                href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-full transition-all hover:scale-[1.03] shadow"
-              >
-                Order Online
-              </a>
             </nav>
 
             {/* Mobile hamburger on hero */}

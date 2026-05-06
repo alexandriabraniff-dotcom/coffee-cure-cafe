@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/30">
-        © {new Date().getFullYear()} Coffee Cure Cafe. All rights reserved.
+        © 2023 Coffee Cure Cafe. All rights reserved.
       </div>
     </footer>
   );

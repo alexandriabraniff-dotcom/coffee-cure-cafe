@@ -20,7 +20,7 @@ const fadeUp = {
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-60px" } as const,
-  transition: { duration: 0.65, ease: "easeOut" },
+  transition: { duration: 0.65, ease: "easeOut" as const },
 };
 
 const HOURS = [
@@ -63,7 +63,7 @@ export default function HomePage() {
             initial={{ y: -80 }}
             animate={{ y: 0 }}
             exit={{ y: -80 }}
-            transition={{ duration: 0.32, ease: "easeOut" }}
+            transition={{ duration: 0.32, ease: "easeOut" as const }}
             style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50 }}
             className="bg-[var(--cream)] border-b border-[var(--border)] shadow-sm"
           >

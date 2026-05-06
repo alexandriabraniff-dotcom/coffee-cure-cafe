@@ -41,6 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${pacifico.variable} ${dmSerif.variable}`}>
       <body className="bg-[var(--cream)] text-[var(--foreground)] antialiased">
+        <div className="bg-[var(--purple)] text-white text-center text-xs py-2 px-4">
+          Website created by <strong>Alexandria Braniff</strong> &mdash; <a href="mailto:alexandriabraniff@gmail.com" className="underline hover:text-[var(--teal)]">alexandriabraniff@gmail.com</a>
+        </div>
         {children}
         <Footer />
       </body>

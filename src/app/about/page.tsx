@@ -53,7 +53,7 @@ export default function AboutPage() {
           </motion.div>
           <motion.div
             {...fadeUp}
-            className="relative h-[420px] rounded-xl overflow-hidden"
+            className="relative h-[420px] rounded-[3px] overflow-hidden"
           >
             <Image
               src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85&auto=format&fit=crop"
@@ -113,7 +113,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--purple)] hover:bg-[var(--purple)]/90 text-white text-sm font-medium tracking-wide rounded transition-all hover:scale-[1.02]"
+            className="inline-flex items-center justify-center px-8 py-3.5 bg-[var(--purple)] hover:bg-[var(--purple)]/90 text-white text-sm font-medium tracking-wide rounded-[3px] transition-all hover:scale-[1.02]"
           >
             Find Us
           </Link>

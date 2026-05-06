@@ -73,7 +73,7 @@ export default function HomePage() {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="flex items-center gap-3"
               >
-                <Image src="/logo.png" alt="Coffee Cure Cafe" width={42} height={42} className="rounded-full" />
+                <Image src="/logo.png" alt="Coffee Cure Cafe" width={42} height={42} className="rounded-[3px]" />
                 <span
                   style={{ fontFamily: "var(--font-pacifico), cursive" }}
                   className="hidden sm:block text-[var(--purple)] text-base leading-tight"
@@ -97,7 +97,7 @@ export default function HomePage() {
                   href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-full transition-all hover:scale-[1.03]"
+                  className="px-5 py-2 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-sm font-semibold rounded-[3px] transition-all hover:scale-[1.03]"
                 >
                   Order Online
                 </a>
@@ -142,7 +142,7 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 px-6 py-3 bg-[var(--teal)] text-white font-semibold rounded-full text-center"
+              className="mt-2 px-6 py-3 bg-[var(--teal)] text-white font-semibold rounded-[3px] text-center"
             >
               Order Online
             </a>
@@ -207,7 +207,7 @@ export default function HomePage() {
               alt="Coffee Cure Cafe"
               width={160}
               height={160}
-              className="rounded-full shadow-2xl ring-4 ring-white/20"
+              className="rounded-[3px] shadow-2xl ring-4 ring-white/20"
             />
           </motion.div>
 
@@ -242,13 +242,13 @@ export default function HomePage() {
               href="https://www.ubereats.com/au/store/coffee-cure-cafe/yBcrVYe5TzW9yVG4ve1raQ"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center px-9 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-base font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-[1.04] active:scale-[0.98]"
+              className="flex items-center justify-center px-9 py-4 bg-[var(--teal)] hover:bg-[var(--teal-dark)] text-white text-base font-bold rounded-[3px] shadow-lg hover:shadow-xl transition-all hover:scale-[1.04] active:scale-[0.98]"
             >
               Order Online
             </a>
             <button
               onClick={() => smoothScroll("#find-us")}
-              className="flex items-center justify-center px-9 py-4 bg-white/15 hover:bg-white/25 border-2 border-white/60 hover:border-white text-white text-base font-bold rounded-2xl backdrop-blur-sm transition-all hover:scale-[1.04] active:scale-[0.98]"
+              className="flex items-center justify-center px-9 py-4 bg-white/15 hover:bg-white/25 border-2 border-white/60 hover:border-white text-white text-base font-bold rounded-[3px] backdrop-blur-sm transition-all hover:scale-[1.04] active:scale-[0.98]"
             >
               Find Us
             </button>
@@ -279,7 +279,7 @@ export default function HomePage() {
                 Whether you&apos;re grabbing a quick flat white before work or settling in for a long weekend brunch, we&apos;ve got you covered six days a week and have been proudly serving the Largs North community ever since.
               </p>
             </motion.div>
-            <motion.div {...fadeUp} className="relative h-[400px] rounded-3xl overflow-hidden shadow-xl">
+            <motion.div {...fadeUp} className="relative h-[400px] rounded-[3px] overflow-hidden shadow-xl">
               <Image
                 src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85&auto=format&fit=crop"
                 alt="Coffee Cure Cafe interior"
@@ -292,7 +292,7 @@ export default function HomePage() {
 
           {/* Meet Teresa */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
-            <motion.div {...fadeUp} className="relative h-[420px] rounded-3xl overflow-hidden shadow-xl order-2 md:order-1">
+            <motion.div {...fadeUp} className="relative h-[420px] rounded-[3px] overflow-hidden shadow-xl order-2 md:order-1">
               <Image
                 src="/owner.jpg"
                 alt="Teresa — owner of Coffee Cure Cafe"
@@ -444,7 +444,7 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <motion.div {...fadeUp} className="rounded-3xl overflow-hidden shadow-lg">
+            <motion.div {...fadeUp} className="rounded-[3px] overflow-hidden shadow-lg">
               <iframe
                 title="Coffee Cure Cafe location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3270.9!2d138.4784!3d-34.8214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0c3e0a1234567%3A0x0!2s595a+Military+Rd%2C+Largs+North+SA+5016!5e0!3m2!1sen!2sau!4v1"

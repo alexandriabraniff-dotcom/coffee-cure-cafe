@@ -111,7 +111,7 @@ export default function ContactPage() {
           {/* Map embed */}
           <motion.div {...fadeUp} className="flex flex-col gap-6">
             <h2 className="font-display text-3xl text-[var(--espresso)]">Where to find us</h2>
-            <div className="rounded-xl overflow-hidden border border-[var(--border)] flex-1 min-h-[380px]">
+            <div className="rounded-[3px] overflow-hidden border border-[var(--border)] flex-1 min-h-[380px]">
               <iframe
                 title="Coffee Cure Cafe location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3270.9!2d138.4784!3d-34.8214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0c3e0a1234567%3A0x0!2s595a+Military+Rd%2C+Largs+North+SA+5016!5e0!3m2!1sen!2sau!4v1"

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, DM_Serif_Display } from "next/font/google";
+import { Inter, Pacifico, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const pacifico = Pacifico({
+  variable: "--font-pacifico",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const dmSerif = DM_Serif_Display({
@@ -33,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dmSerif.variable}`}>
-      <body className="bg-[var(--cream)] text-[var(--warm-gray)] antialiased">
+    <html lang="en" className={`${inter.variable} ${pacifico.variable} ${dmSerif.variable}`}>
+      <body className="bg-[var(--cream)] text-[var(--foreground)] antialiased">
         {children}
         <Footer />
       </body>

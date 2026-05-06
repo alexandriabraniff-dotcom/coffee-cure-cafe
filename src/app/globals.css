@@ -1,38 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF7F2;
-  --foreground: #2A2520;
-  --cream: #FAF7F2;
-  --stone-light: #EDE8F0;
-  --espresso: #2D1F3D;
-  --purple: #7133B2;
-  --purple-dark: #561090;
-  --purple-light: #9B6FD0;
-  --purple-muted: #F2EDF9;
-  --teal: #3DC4B0;
-  --teal-dark: #2EA899;
-  --warm-gray: #2A2520;
-  --muted: #6B5E76;
-  --border: #DDD4E8;
+  --background: #FAF2FF;
+  --foreground: #1E1028;
+  --cream: #FAF2FF;
+  --lavender-light: #F0E0FF;
+  --lavender-mid: #D9B8F0;
+  --purple: #67218F;
+  --purple-dark: #4A1870;
+  --purple-light: #9B5FC0;
+  --purple-muted: #F5EAFF;
+  --teal: #43BFB2;
+  --teal-dark: #329E93;
+  --espresso: #2D1A3D;
+  --warm-gray: #3A2850;
+  --muted: #7A5E90;
+  --border: #E2CCEF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-cream: var(--cream);
-  --color-stone-light: var(--stone-light);
-  --color-espresso: var(--espresso);
+  --color-lavender-light: var(--lavender-light);
   --color-purple: var(--purple);
   --color-purple-dark: var(--purple-dark);
   --color-purple-light: var(--purple-light);
   --color-purple-muted: var(--purple-muted);
   --color-teal: var(--teal);
   --color-teal-dark: var(--teal-dark);
+  --color-espresso: var(--espresso);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-dm-serif);
+  --font-display: var(--font-pacifico);
+  --font-serif: var(--font-dm-serif);
 }
 
 body {
@@ -40,10 +42,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), Georgia, serif;
 }
 
 html {

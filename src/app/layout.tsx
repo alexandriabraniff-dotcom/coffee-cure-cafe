@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 
 const inter = Inter({
@@ -35,9 +34,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${dmSerif.variable}`}>
-      <body className="min-h-screen flex flex-col bg-[var(--cream)] text-[var(--warm-gray)] antialiased">
-        <Nav />
-        <main className="flex-1">{children}</main>
+      <body className="bg-[var(--cream)] text-[var(--warm-gray)] antialiased">
+        {children}
         <Footer />
       </body>
     </html>

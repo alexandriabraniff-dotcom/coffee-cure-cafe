@@ -6,10 +6,12 @@
   --cream: #FAF7F2;
   --stone-light: #EDE8F0;
   --espresso: #2D1F3D;
-  --purple: #6B3FA0;
-  --purple-dark: #4E2E78;
+  --purple: #7133B2;
+  --purple-dark: #561090;
   --purple-light: #9B6FD0;
-  --purple-muted: #F0EBF8;
+  --purple-muted: #F2EDF9;
+  --teal: #3DC4B0;
+  --teal-dark: #2EA899;
   --warm-gray: #2A2520;
   --muted: #6B5E76;
   --border: #DDD4E8;
@@ -25,6 +27,8 @@
   --color-purple-dark: var(--purple-dark);
   --color-purple-light: var(--purple-light);
   --color-purple-muted: var(--purple-muted);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
@@ -40,4 +44,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }

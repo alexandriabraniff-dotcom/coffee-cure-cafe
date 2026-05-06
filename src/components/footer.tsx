@@ -67,12 +67,12 @@ export default function Footer() {
         {/* Hours */}
         <div>
           <h4 className="text-white font-medium mb-4 flex items-center gap-2">
-            <Clock className="w-4 h-4 text-[var(--purple-light)]" />
+            <Clock className="w-4 h-4 text-[var(--teal)]" />
             Trading Hours
           </h4>
           <ul className="text-sm space-y-1.5 text-[var(--stone-light)]/70">
             <li className="flex justify-between"><span>Mon – Tue</span><span>6:30am – 2:00pm</span></li>
-            <li className="flex justify-between"><span>Wednesday</span><span className="text-[var(--purple-light)]">Closed</span></li>
+            <li className="flex justify-between"><span>Wednesday</span><span className="text-[var(--teal)]">Closed</span></li>
             <li className="flex justify-between"><span>Thu – Fri</span><span>6:30am – 2:00pm</span></li>
             <li className="flex justify-between"><span>Sat – Sun</span><span>7:30am – 12:00pm</span></li>
           </ul>
@@ -83,15 +83,15 @@ export default function Footer() {
           <h4 className="text-white font-medium mb-4">Find Us</h4>
           <ul className="text-sm space-y-3 text-[var(--stone-light)]/70">
             <li className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 mt-0.5 text-[var(--purple-light)] shrink-0" />
+              <MapPin className="w-4 h-4 mt-0.5 text-[var(--teal)] shrink-0" />
               <span>Shop 2/595a Military Rd,<br />Largs North SA 5016</span>
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-[var(--purple-light)] shrink-0" />
+              <Phone className="w-4 h-4 text-[var(--teal)] shrink-0" />
               <a href="tel:+61882485000" className="hover:text-white transition-colors">(08) 8248 5000</a>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-[var(--purple-light)] shrink-0" />
+              <Mail className="w-4 h-4 text-[var(--teal)] shrink-0" />
               <a href="mailto:coffeecurecafe@gmail.com" className="hover:text-white transition-colors">coffeecurecafe@gmail.com</a>
             </li>
           </ul>

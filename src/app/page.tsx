@@ -3,7 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { Clock, MapPin, Coffee, UtensilsCrossed, Heart, Phone, Mail, Facebook, Instagram, ExternalLink } from "lucide-react";
+import { Clock, MapPin, Coffee, UtensilsCrossed, Heart, Phone, Mail, ExternalLink } from "lucide-react";
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+  );
+}
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -355,7 +373,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 px-4 py-2.5 bg-[var(--purple-muted)] hover:bg-[var(--purple)] text-[var(--purple)] hover:text-white rounded-lg transition-all text-sm font-medium group"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <FacebookIcon className="w-4 h-4" />
                     Facebook
                   </a>
                   <a
@@ -364,7 +382,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2.5 px-4 py-2.5 bg-[var(--purple-muted)] hover:bg-[var(--purple)] text-[var(--purple)] hover:text-white rounded-lg transition-all text-sm font-medium"
                   >
-                    <Instagram className="w-4 h-4" />
+                    <InstagramIcon className="w-4 h-4" />
                     Instagram
                   </a>
                 </div>

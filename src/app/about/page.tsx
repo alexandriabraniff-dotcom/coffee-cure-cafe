@@ -56,8 +56,8 @@ export default function AboutPage() {
             className="relative h-[420px] rounded-[3px] overflow-hidden"
           >
             <Image
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85&auto=format&fit=crop"
-              alt="Warm cafe interior"
+              src="/about-coffee.webp"
+              alt="Coffee with latte art at Coffee Cure Cafe"
               fill
               className="object-cover"
             />
